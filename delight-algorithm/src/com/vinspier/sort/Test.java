@@ -12,7 +12,8 @@ public class Test {
         //SelectSort.sort(array);
         //BubbleSort.sort(array);
         //InsertSort.sort(array);
-        QuickSort.sort(array,0,array.length - 1);
+        //QuickSort.sort(array,0,array.length - 1);
+        ShellSort.sort(array,6);
 
         System.out.println("[--------------------------------]");
         System.out.println(Arrays.toString(array));
