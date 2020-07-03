@@ -29,6 +29,8 @@ public class ShellSort {
      * 对每个分组进行希尔排序
      * 每组start 第一个元素起始位置
      * gap 没组的间隔大小
+     *
+     * 最差的情况O(n^2)
      * */
     private static void sortInsert(int[] array,int start,int gap) {
         for (int i = start + gap; i < array.length; i += gap) {
