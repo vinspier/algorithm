@@ -3,6 +3,12 @@ package com.vinspier.sort;
 public class ShellSort {
 
 
+    /**
+     *
+     * 先对数组 进行分组
+     * 在对每组进行插入排序 数组宏观上大致有了排序倾向
+     * 直到gap为1组时 使用插入排序
+     * */
     public static void sort(int[] array,int gap){
         if (array.length < 2){
             return;
