@@ -8,11 +8,7 @@ package com.vinspier.sort;
  * 找出最小值，与第一个位置交换
  *
  * */
-public class SimpleSelect {
-
-    private SimpleSelect() {
-
-    }
+public class SelectSort {
 
     /**
      * 时间复杂度
@@ -23,8 +19,12 @@ public class SimpleSelect {
      * 辅助空间 O(1)
      * */
     public static int[] sort(int[] array){
+        if (array.length < 2){
+            return array;
+        }
         int temp;
         int minIndex;
+        // 比较数的起始位置
         for (int i = 0; i < array.length - 1; i++){
             minIndex = i;
             // 逐一比较
@@ -43,18 +43,4 @@ public class SimpleSelect {
         return array;
     }
 
-    public static void printArray(int[] arr){
-        for (int i:arr) {
-            System.out.print(i + " ");
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] array = ArraysUtil.getIntArray(20,50);
-        printArray(array);
-        sort(array);
-        System.out.println();
-        System.out.println("[--------------------------------]");
-        printArray(array);
-    }
 }
