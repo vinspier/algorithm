@@ -1,4 +1,4 @@
-package com.vinspier.LeetCode.simple.no1;
+package com.vinspier.LeetCode.simple;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * @Date: 2020/5/14 17:00
  * @Version V1.0
  **/
-public class TwoSum {
+public class TwoSum_No1 {
     public static void main(String[] args) {
 
     }
