@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @CreateDate: Created in 2020/8/5 18:57 <br>
  * @Author: <a href="fanxb@haibaobaoxian.cn">fxb</a>
  */
-public class polling {
+public class Polling {
 
     // 轮询目标 id做标识
     private static List<Integer> idList = new ArrayList<>();
@@ -39,31 +39,31 @@ public class polling {
 
 
     public static void main(String[] args) {
-
+        testSubList();
        // getIds();
 
-        System.out.println(idList.toString());
-        System.out.println(nodes.toString());
-        System.out.println("---------------------------------------");
-        new Thread(() -> {
-            // 模拟修改 轮询的存储对象
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            nodes.get(14).setWork(0);
-            nodes.get(2).setWork(0);
-
-        }).start();
-        while (true){
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            testPoll();
-        }
+//        System.out.println(idList.toString());
+//        System.out.println(nodes.toString());
+//        System.out.println("---------------------------------------");
+//        new Thread(() -> {
+//            // 模拟修改 轮询的存储对象
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            nodes.get(14).setWork(0);
+//            nodes.get(2).setWork(0);
+//
+//        }).start();
+//        while (true){
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            testPoll();
+//        }
 
     }
 
@@ -95,6 +95,12 @@ public class polling {
             }
         }
 
+    }
+
+    public static void testSubList(){
+        // System.out.println(nodes.subList(18,19));
+        // System.out.println(nodes.subList(20,20));
+        System.out.println(nodes.contains(null));
     }
 
     // stream操作 获取数组ids
