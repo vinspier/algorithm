@@ -1,9 +1,7 @@
 package com.vinspier.LeetCode.middle;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @description:
@@ -34,7 +32,7 @@ public class RestoreIpAddresses_93 {
          List<String> validIps = new ArrayList<>();
          // 递归到第四位时 只需判断 该位是否满足0 - 255
          if (times == 4){
-             if (Integer.valueOf(s) <= 255){
+             if ((s.length() < 2 || !s.startsWith("0")) &&  Long.valueOf(s) <= 255 ){
                  validIps.add(s);
              }
              return validIps;
@@ -46,7 +44,7 @@ public class RestoreIpAddresses_93 {
              String ipIndex;
              while (startIndex < s.length() - 4 + times){
                  ipIndex = s.substring(0,startIndex + 1);
-                 if (Integer.valueOf(ipIndex) > 255){
+                 if (Long.valueOf(ipIndex) > 255 || (ipIndex.length() > 1 && ipIndex.startsWith("0"))){
                      break;
                  }
                  List<String> nextIpIndex = getIpIndex(s.substring(startIndex + 1),times + 1);
@@ -62,7 +60,7 @@ public class RestoreIpAddresses_93 {
 
     public static void main(String[] args) {
         RestoreIpAddresses_93 restoreIpAddresses_93 = new RestoreIpAddresses_93();
-        List<String> ips = restoreIpAddresses_93.restoreIpAddresses("25525511135");
+        List<String> ips = restoreIpAddresses_93.restoreIpAddresses("0279245587303");
         ips.forEach(System.out::println);
     }
 
