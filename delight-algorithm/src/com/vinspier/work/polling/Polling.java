@@ -99,7 +99,11 @@ public class Polling {
 
     public static void testSubList(){
         // System.out.println(nodes.subList(18,19));
-        // System.out.println(nodes.subList(20,20));
+
+        System.out.println(nodes.subList(0,12).getClass());
+
+         System.out.println(nodes.subList(20,20));
+
         System.out.println(nodes.contains(null));
     }
 
