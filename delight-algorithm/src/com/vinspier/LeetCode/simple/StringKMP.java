@@ -22,7 +22,8 @@ public class StringKMP {
 //            System.out.println(len);
 //        }
 
-        System.out.println(stringKMP.kmpMatch("loveleetcode","code"));
+//        System.out.println(stringKMP.kmpMatch("loveleetcode","code"));
+        System.out.println(stringKMP.indexOf("loveleetcode","etc"));
 
     }
 
@@ -88,6 +89,7 @@ public class StringKMP {
         if (template.length() > target.length()){
             return -1;
         }
+
         int[] next = getNext(getMaxLen(template));
         char[] targetChars = target.toCharArray();
         char[] templateChars = template.toCharArray();
@@ -140,6 +142,94 @@ public class StringKMP {
             maxLen[i] = maxCount;
         }
         return maxLen;
+    }
+
+    /**
+     * 问题的再次延伸 相当于string的contains方法
+     * @param source 源字符串
+     * @param target 要寻找的目标字符串
+     * @return
+     */
+    public boolean contains(String source,String target){
+        char[] sourceChars = source.toCharArray();
+        char[] targetChars = target.toCharArray();
+        return indexOf(sourceChars,0,targetChars,0,0) > -1;
+    }
+
+    /**
+     *
+     * @param source 源字符串
+     * @param target 要寻找的目标字符串
+     * @return
+     */
+    public int indexOf(String source,String target){
+        if (null == source){
+            throw new IllegalArgumentException("source can not to be null");
+        }
+        if (null == target){
+            return -1;
+        }
+        char[] sourceChars = source.toCharArray();
+        char[] targetChars = target.toCharArray();
+        if (sourceChars.length < targetChars.length){
+            return -1;
+        }
+        return indexOf(sourceChars,0,targetChars,0,0);
+    }
+
+    /**
+     *
+     * @param source 源字符串
+     * @param sourceOffset 源字符串默认起始位置
+     * @param target 要寻找的目标字符串
+     * @param targetOffset 要寻找的目标字符串默认起始位置
+     * @param fromIndex 源字符串指定匹配起始位置 最小为0即第一位
+     * @return
+     */
+    public int indexOf(char[] source,int sourceOffset,char[] target,int targetOffset,int fromIndex){
+        int sourceLen = source.length;
+        int targetLen = target.length;
+        // 如果指定匹配起始位置超出源字符串长度
+        if (fromIndex >= sourceLen){
+            // 若目标长度为0 则返回源字符串最后一位 否则-1
+            return targetLen == 0 ? sourceLen : -1;
+        }
+        if (fromIndex < 0){
+            fromIndex = 0;
+        }
+        // 判断目标字符串是否为空
+        if (targetLen == 0){
+            return fromIndex;
+        }
+        // 计算源字符串开始匹配位置
+        int sourceStart = sourceOffset + fromIndex;
+        // 如果 起始位置及之后的长度小于目标字符串
+        if (sourceLen - sourceStart < targetLen){
+            return -1;
+        }
+        char first = target[targetOffset];
+        // 源目标最后一次匹配位置
+        int max = sourceLen - targetLen;
+        for (int i = sourceStart; i < max; i++){
+            // 直到找到第一个匹配字符的位置
+            if (source[i] != first){
+                while (++i <= max && source[i] != first){}
+            }
+            if (i <= max){
+                int j = i + 1;
+                int k = targetOffset + 1;
+                for (; k < targetLen;k++){
+                    if (source[j] != target[k]){
+                        break;
+                    }
+                    j++;
+                }
+                if (k == targetLen){
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     public int[] getNext(int[] maxLen){
