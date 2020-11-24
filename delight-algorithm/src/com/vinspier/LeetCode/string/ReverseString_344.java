@@ -1,4 +1,4 @@
-package com.vinspier.LeetCode.simple;
+package com.vinspier.LeetCode.string;
 
 /**
  * 反转字符串 要求不允许使用额外的数组空间
