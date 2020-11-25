@@ -1,4 +1,4 @@
-package com.vinspier.LeetCode.simple;
+package com.vinspier.LeetCode.array;
 
 import java.util.HashMap;
 import java.util.List;

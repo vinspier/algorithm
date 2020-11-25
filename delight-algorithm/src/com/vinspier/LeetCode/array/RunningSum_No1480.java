@@ -1,4 +1,4 @@
-package com.vinspier.LeetCode.simple;
+package com.vinspier.LeetCode.array;
 
 /**
  * 一维数组的动态和
