@@ -33,7 +33,7 @@ public class TwentyOne {
     }
 
     public void bet(){
-        if (amount < 1 || time < 1);{
+        if (amount < 1 || time < 1){
             throw new RuntimeException("amount must be greater than 0 or bet time must be more than 1 time");
         }
     }
