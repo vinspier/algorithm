@@ -60,7 +60,7 @@ public class StringKMP {
                 if (j == templateChars.length - 1){
                     return i;
                 }
-                // 继续匹配下一位
+                // 继续右移下一位 匹配模版的下一位字符
                 var1++;
             }
         }

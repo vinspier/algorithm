@@ -40,18 +40,19 @@ public class FirstUniqChar_387 {
         }
         // 在遍历一次原字符数组
         for (int j= 0; j < charValues.length; j++){
+            // 若存储的索引等于字符在原字符串中的为止 表示该字符只出现一次
             if (lastCharIndex[charValues[j] - 'a'] == j){
                 return j;
-            }else{
-                // 将值置1 防止最后一位相同字符判断返回 -1
-                lastCharIndex[charValues[j] - 'a'] = -1;
             }
+            // 将值置1 防止最后一位相同字符判断返回 -1
+            lastCharIndex[charValues[j] - 'a'] = -1;
         }
         return -1;
     }
 
     /**
      * charCount 记录字符出现的次数
+     * 根据次数==1 返回字符所在的索引位
      */
     public int firstUniqChar1(String s) {
         // 判断空字符串

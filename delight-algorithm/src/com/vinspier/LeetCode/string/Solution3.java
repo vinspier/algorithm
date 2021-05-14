@@ -13,6 +13,7 @@ public class Solution3 {
 //        System.out.println(solution3.lengthOfLongestSubstring("aaabbb"));
 //        System.out.println(solution3.lengthOfLongestSubstring("dvdf"));
         System.out.println(solution3.lengthOfLongestSubstring("abba"));
+        System.out.println(solution3.lengthOfLongestSubstring1("abba"));
     }
 
     /**
@@ -73,6 +74,31 @@ public class Solution3 {
             i++;
         }
         return Math.max(longestSubLen,i - start);
+    }
+
+    /**
+     * 思路2
+     * 滑动窗口方式
+     * hashmap做字符存储 key字符 value字符的索引位置
+     * */
+    public int lengthOfLongestSubstring1(String s) {
+        HashMap<Character,Integer> hashMap = new HashMap<>();
+        char[] chars = s.toCharArray();
+        int len = chars.length;
+        int left = 0;
+        int findIndex;
+        int longestSubLen = 0;
+        for (int i = 0; i < len; i++){
+            findIndex = hashMap.getOrDefault(chars[i],-1);
+            // 若hashmap中已经存在 则进行滑动窗口
+            if (findIndex > -1){
+                left = Math.max(left,findIndex + 1);
+            }
+            hashMap.put(chars[i],i);
+            // 重新比较一下 最长不重复子字符串
+            longestSubLen = Math.max(longestSubLen,i - left + 1);
+        }
+        return longestSubLen;
     }
 
 }

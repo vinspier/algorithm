@@ -1,4 +1,4 @@
-package com.vinspier.LeetCode.bitOperate;
+package com.vinspier.LeetCode.bitCalculate;
 
 /**
  * 异或逻辑
